@@ -1,2 +1,7 @@
 # WordsBook
-A word book
+
+---
+
+A word book created for study English.
+
+Developing...
