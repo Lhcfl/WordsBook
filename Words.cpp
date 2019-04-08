@@ -113,6 +113,7 @@ int readWords() {
     if (succeed) {
         sort(wordsList.begin(), wordsList.end());
     }
+    fin.close();
     return succeed;
 }
 
@@ -144,6 +145,15 @@ void printWords() {
     }
 }
 
+void speak(string s) {
+    ofstream fout;
+    fout.open("TMPSPEAK.vbs");
+    fout << "CreateObject(\"SAPI.SpVoice\").Speak \"" << s << "\"";
+    fout.close();
+    system("TMPSPEAK.vbs");
+    system("del TMPSPEAK.vbs");
+}
+
 int main() {
     srand((unsigned)time(NULL));
     if (!selfCheck()) {
@@ -154,23 +164,47 @@ int main() {
     printTitle("Word List");
     cout << "Hello! Here is your words to practice:\n";
     printWords();
-    cout << "Imput \"e\" to get into reciting mode, and \"c\" to get into memory model";
+    cout << "Imput \"e\" to get into reciting mode, \"c\" to get into memory mode, and \"l\" to get into listening-reciting mode.";
     char c;
-    while(c = getch(), c != 'e' && c != 'c');
+    while(c = getch(), c != 'e' && c != 'c' && c != 'l');
     system("cls");
     if (c == 'e') {
         char str[200] = {0};
-        while (1) {
-            int randomNum = rand() % wordsList.size();
+        queue<int> que;
+        random_shuffle(wordsList.begin(), wordsList.end());
+        int lengthOfList = wordsList.size();
+        for (int i = 0; i < lengthOfList; i++) {
+            que.push(i);
+        }
+        int rightNumber = 0, wrongAnswer = 0, all = 0;
+        while (!que.empty()) {
+            _sleep(600);
+            system("cls");
+            printTitle("Reciting");
+            all++;
+            printf("%d of %d:\n", all, lengthOfList);
+            int randomNum = que.front();
+            que.pop();
             cout << wordsList[randomNum].meaning << endl;
             int i = 0;
             while ((c = getchar()) != '\n') {
                 str[i++] = c;
             }
             str[i] = 0;
-            cout << (wordsList[randomNum].name == str ? "Yes\n\n" : "No, it should be \"" + wordsList[randomNum].name + "\"\n\n");
+            if (wordsList[randomNum].name == str) {
+                cout << "Yes\n\n";
+                rightNumber++;
+            } else {
+                cout << "No, it should be \"" + wordsList[randomNum].name + "\"\n\n";
+                que.push(randomNum);
+                wrongAnswer++;
+                lengthOfList++;
+            }
         }
-    } else {
+        system("cls");
+        printTitle("Grades");
+        printf("Finish! \n All: %d words, right: %d words, wrong: %d words.\nScore: %lf", all, rightNumber, wrongAnswer, rightNumber * 100.0 / all);
+    } else if (c == 'c') {
         while (1) {
             int randomNum = rand() % wordsList.size();
             cout << wordsList[randomNum].name;
@@ -180,6 +214,44 @@ int main() {
             //cout << "Have you remembered it? (y/n):";
             //while(c = getch(), c != 'y' && c != 'n');
         }
+    } else {
+        char str[200] = {0};
+        queue<int> que;
+        random_shuffle(wordsList.begin(), wordsList.end());
+        int lengthOfList = wordsList.size();
+        for (int i = 0; i < lengthOfList; i++) {
+            que.push(i);
+        }
+        int rightNumber = 0, wrongAnswer = 0, all = 0;
+        while (!que.empty()) {
+            _sleep(600);
+            system("cls");
+            printTitle("Reciting");
+            all++;
+            printf("%d of %d:\n", all, lengthOfList);
+            int randomNum = que.front();
+            que.pop();
+            speak(wordsList[randomNum].name);
+            speak(wordsList[randomNum].name);
+            int i = 0;
+            while ((c = getchar()) != '\n') {
+                str[i++] = c;
+            }
+            str[i] = 0;
+            if (wordsList[randomNum].name == str) {
+                cout << "Yes, and it means " << wordsList[randomNum].meaning << "\n\n";
+                rightNumber++;
+            } else {
+                cout << "No, it should be \"" + wordsList[randomNum].name + "\"\n";
+                cout << "and it means " << wordsList[randomNum].meaning << "\n\n";
+                que.push(randomNum);
+                wrongAnswer++;
+                lengthOfList++;
+            }
+        }
+        system("cls");
+        printTitle("Grades");
+        printf("Finish! \n All: %d words, right: %d words, wrong: %d words.\nScore: %lf", all, rightNumber, wrongAnswer, rightNumber * 100.0 / all);
     }
     pause();
     return 0;
