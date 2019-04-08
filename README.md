@@ -2,6 +2,8 @@
 
 ---
 
-A word book created for study English.
+一个我用来学英语的软件
 
-Developing...
+有听写模式、默写模式、记忆模式三种
+
+记忆模式正在完善ing......
