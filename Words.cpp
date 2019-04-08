@@ -159,8 +159,16 @@ int main() {
     while(c = getch(), c != 'e' && c != 'c');
     system("cls");
     if (c == 'e') {
+        char str[200] = {0};
         while (1) {
             int randomNum = rand() % wordsList.size();
+            cout << wordsList[randomNum].meaning << endl;
+            int i = 0;
+            while ((c = getchar()) != '\n') {
+                str[i++] = c;
+            }
+            str[i] = 0;
+            cout << (wordsList[randomNum].name == str ? "Yes\n\n" : "No, it should be \"" + wordsList[randomNum].name + "\"\n\n");
         }
     } else {
         while (1) {
