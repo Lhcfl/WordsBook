@@ -1,34 +1,65 @@
-enjoyable | adj.令人愉快的
-experience | n. & vt. 经历，经验
-assembly | n.集会，会议
-headmaster | n.校长
-earn | vt.赚
-respect | n. & vt. 尊敬
-devote | vt.致力于；献身
-literature | n.文学
-average | adj.一般地，普通的，平均的
-struggle | n.难事
-challenging | adj.具有挑战性的
-encouragement | n.鼓励
-cooking | n.做饭
-for free | 免费
-extra | adj.外加的
-fond | adj.喜爱
-be fond of | 喜爱，喜欢
-Spanish | n. & adj. 西班牙语的
-sculpture | n.雕像，雕塑
-dessert | n.甜点
-look back (on) | 回忆
-satisfaction | n.满意
-surf | vt. & vi. 冲浪
-academic | adj.学术的
-exchange | n. & vt. 交换
-former | adj.以前的
-graduate | vi. 毕业 n. 毕业生
-fluent | adj.流利的
-painting | n.绘画
-donate | vt.捐赠
-kindness | n.善意
-splendid | adj.极佳的，非常好的
-independent | adj.独立的
-make use of | 利用
+ask | v.问；要求
+asleep | adj. 睡着的
+aspect | n. 方面
+assistant | n.助手
+astronaut | n.宇航员
+at | prep. 在；因为；以
+atmosphere | n.大气；气氛
+attach | v.附上
+attack | n. & vt. 攻击
+attempt | n. & vt. 尝试；努力
+attend | v.参加
+attention | n. 注意
+attitude | n. 态度
+attract | v.吸引
+attractive | adj. 有吸引力的
+audience | n.观众
+aunt | n.婶婶
+author | n.作者
+authority | n.权力
+autumn | n.秋天
+available | adj. 可用的
+average | n. & adj.平均的
+avoid | v.躲开
+awake | v. & adj.醒的
+award | v. & adj. 奖
+aware | adj. 发觉
+away | adv. 离开
+awful | adj. 很坏的
+baby | n. 婴儿
+back | adv. 回; n. 背; adj.背后的
+background | n. 背景
+backward | adv. 向后
+bad | adj. 坏的
+bag | n.书包
+balance | n. & vt. & vi. 平衡
+ball | n. 球
+band | n.乐队
+bank | n.银行
+bar | n.酒吧
+base | n.基地； vt. 以……为基地
+basic | adj. 基本的 
+basis | n.基础
+basket | n. 篮子
+basketball | n.篮球
+bath | n. 洗澡
+bathe | v. 洗澡
+bathroom | n.浴室
+bathtub | n.浴缸
+battle | n.战斗
+be | v. 是
+beach | n. 沙滩
+bear | n.熊； v.忍受
+beat | n. & v.打
+beautiful | adj. 美的
+beauty | n. 美
+because | conj. 因为
+become | v.变成
+bed | n.床
+bedding | n. 卧具
+bedroom | n. 寝室
+beer | n. 啤酒 
+
+
+
+

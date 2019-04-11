@@ -205,14 +205,31 @@ int main() {
         printTitle("Grades");
         printf("Finish! \n All: %d words, right: %d words, wrong: %d words.\nScore: %lf", all, rightNumber, wrongAnswer, rightNumber * 100.0 / all);
     } else if (c == 'c') {
-        while (1) {
-            int randomNum = rand() % wordsList.size();
-            cout << wordsList[randomNum].name;
+        queue<int> que;
+        random_shuffle(wordsList.begin(), wordsList.end());
+        int lengthOfList = wordsList.size();
+        for (int i = 0; i < lengthOfList; i++) {
+            que.push(i);
+        }
+        int forget = 0, all = 0;
+        while (!que.empty()) {
+            int i = que.front();
+            all++;
+            que.pop();
+            printf("%d of %d : \n", all, lengthOfList);
+            cout << wordsList[i].name;
+            speak(wordsList[i].name);
             getch();
-            cout << wordsList[randomNum].meaning << endl;
-            cout << endl;
-            //cout << "Have you remembered it? (y/n):";
-            //while(c = getch(), c != 'y' && c != 'n');
+            cout << wordsList[i].meaning << endl;
+            cout << "Have you remembered it? (y/n):";
+            while(c = getch(), c != 'y' && c != 'n');
+            if (c == 'n') {
+                que.push(i);
+                que.push(rand() % wordsList.size());
+                que.push(rand() % wordsList.size());
+                lengthOfList += 3;
+            }
+            cout << endl << endl;
         }
     } else {
         char str[200] = {0};
