@@ -164,11 +164,18 @@ int main() {
     printTitle("Word List");
     cout << "Hello! Here is your words to practice:\n";
     printWords();
-    cout << "Imput \"e\" to get into reciting mode, \"c\" to get into memory mode, and \"l\" to get into listening-reciting mode.";
+    cout << "--------------------------------\n";
+    cout << "Imput \"e\" to get into reciting mode, \n"
+            "\"c\" to get into memory mode, \n "
+            "\"l\" to get into listening-reciting mode,\n"
+            "\"f\" to get into free mode,\n"
+            "\"r\" to get into reading mode.\n"
+            ;
     char c;
-    while(c = getch(), c != 'e' && c != 'c' && c != 'l');
+    while(c = getch(), c != 'e' && c != 'c' && c != 'l' && c != 'r' && c != 'f');
     system("cls");
     if (c == 'e') {
+        //reciting mode
         char str[200] = {0};
         queue<int> que;
         random_shuffle(wordsList.begin(), wordsList.end());
@@ -205,6 +212,7 @@ int main() {
         printTitle("Grades");
         printf("Finish! \n All: %d words, right: %d words, wrong: %d words.\nScore: %lf", all, rightNumber, wrongAnswer, rightNumber * 100.0 / all);
     } else if (c == 'c') {
+        //memory mode
         queue<int> que;
         random_shuffle(wordsList.begin(), wordsList.end());
         int lengthOfList = wordsList.size();
@@ -231,7 +239,8 @@ int main() {
             }
             cout << endl << endl;
         }
-    } else {
+    } else if(c == 'l') {
+        //listening-reciting mode
         char str[200] = {0};
         queue<int> que;
         random_shuffle(wordsList.begin(), wordsList.end());
@@ -269,6 +278,41 @@ int main() {
         system("cls");
         printTitle("Grades");
         printf("Finish! \n All: %d words, right: %d words, wrong: %d words.\nScore: %lf", all, rightNumber, wrongAnswer, rightNumber * 100.0 / all);
+    } else if (c == 'f') {
+        //free mode.
+        int lengthOfList = wordsList.size();
+        for (int i = 0; i < lengthOfList;) {
+            printTitle("Free mode");
+            printf("%d of %d : \n", i, lengthOfList);
+            cout << wordsList[i].name << endl;
+            cout << wordsList[i].meaning << endl;
+            cout << "Use 'R' to read, A' to back, and 'D' to next.\n";
+            while(c = getch(), c != 'a' && c != 'd' && c != 'r');
+            if (c == 'a') {
+                i--;
+            } else if (c == 'd'){
+                i++;
+            } else {
+                speak(wordsList[i].name);
+            }
+            
+            system("cls");
+        }
+        cout << "Finish!\n";
+    } else if (c == 'r') {
+        //reading mode.
+        int lengthOfList = wordsList.size();
+READWORD:
+        for (int i = 0; i < lengthOfList; i++) {
+            cout << wordsList[i].name << " " << wordsList[i].meaning << endl;
+            speak(wordsList[i].name + " " + wordsList[i].name + " " + wordsList[i].name + ". " + wordsList[i].meaning);
+        }
+        cout << "Again?(y/n):";
+        while(c = getch(), c != 'y' && c != 'n');
+        if (c == 'y') {
+            goto READWORD;
+        }
+        cout << "Finish!\n";
     }
     pause();
     return 0;
