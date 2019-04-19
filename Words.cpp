@@ -153,13 +153,7 @@ void speak(string s) {
     system("TMPSPEAK.vbs");
     system("del TMPSPEAK.vbs");
 }
-
-int main() {
-    srand((unsigned)time(NULL));
-    if (!selfCheck()) {
-        pause();
-        return 0;
-    }
+int mainfunction() {
     system("cls");
     printTitle("Word List");
     cout << "Hello! Here is your words to practice:\n";
@@ -316,4 +310,15 @@ READWORD:
     }
     pause();
     return 0;
+}
+
+int main() {
+    srand((unsigned)time(NULL));
+    if (!selfCheck()) {
+        pause();
+        return 0;
+    }
+    while(1) {
+        mainfunction();
+    }
 }
